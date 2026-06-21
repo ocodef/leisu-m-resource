@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雷速 · 再次遇见</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #faf8f5;
+      color: #2c2c2c;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.75;
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrap {
+      max-width: 840px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+      padding: 2.8rem 2.4rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.6rem;
+      }
+      .page-wrap {
+        padding: 2rem 1.2rem;
+        border-radius: 20px;
+      }
+    }
+
+    /* 标题目录风格 */
+    .site-header {
+      border-bottom: 1px solid #eae6e0;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .site-header h1 {
+      font-size: 2.2rem;
+      font-weight: 450;
+      letter-spacing: 1px;
+      color: #3f3a35;
+    }
+
+    .site-header .subnote {
+      font-size: 0.9rem;
+      color: #8b8279;
+      background: #f3efe9;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* 目录感网格 */
+    .index-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 2.4rem 0 2rem;
+    }
+
+    @media (max-width: 520px) {
+      .index-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+    }
+
+    .dir-card {
+      background: #f9f6f1;
+      border-radius: 20px;
+      padding: 1.4rem 1.4rem 1.6rem;
+      transition: background 0.15s;
+    }
+
+    .dir-card:hover {
+      background: #f2ede6;
+    }
+
+    .dir-card .card-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a0988d;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .dir-card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #36302a;
+      margin-bottom: 0.4rem;
+    }
+
+    .dir-card p {
+      font-size: 0.95rem;
+      color: #4e4943;
+      margin-top: 0.3rem;
+    }
+
+    .dir-card .tag {
+      display: inline-block;
+      background: #d9d2c9;
+      color: #2f2a25;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      margin-top: 0.8rem;
+    }
+
+    /* 说明区 文章排印 */
+    .essay-block {
+      margin: 2.2rem 0 1.8rem;
+      padding: 0.2rem 0;
+    }
+
+    .essay-block h2 {
+      font-size: 1.5rem;
+      font-weight: 450;
+      color: #3e3832;
+      border-left: 4px solid #c9b7a3;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .essay-block p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #393631;
+    }
+
+    .essay-block p a {
+      color: #6d5d4b;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+
+    .essay-block p a:hover {
+      color: #a58162;
+    }
+
+    /* 提示区 引用块风格 */
+    .callout-box {
+      background: #f3efe9;
+      border-radius: 24px;
+      padding: 1.6rem 2rem;
+      margin: 2.2rem 0;
+      position: relative;
+      border-left: 6px solid #b8a694;
+      font-style: normal;
+    }
+
+    .callout-box .callout-title {
+      font-weight: 550;
+      font-size: 1.1rem;
+      color: #3b3530;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .callout-box p {
+      color: #4b453e;
+      font-size: 0.98rem;
+      margin: 0.4rem 0;
+    }
+
+    .callout-box .small-meta {
+      color: #7c7368;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      border-top: 1px dashed #d6cec3;
+      padding-top: 0.8rem;
+    }
+
+    /* 相关信息区 */
+    .related-area {
+      background: #fcfaf7;
+      border: 1px solid #e7e1d9;
+      border-radius: 20px;
+      padding: 1.6rem 1.8rem;
+      margin: 2.2rem 0 1.4rem;
+    }
+
+    .related-area h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #5c534a;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .related-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      list-style: none;
+    }
+
+    .related-items li {
+      font-size: 0.92rem;
+      color: #4d4640;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .related-items li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #b3a596;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      margin: 2rem 0 0.8rem;
+    }
+
+    .faq-mini details {
+      border-bottom: 1px solid #eae3db;
+      padding: 0.8rem 0;
+    }
+
+    .faq-mini details summary {
+      font-weight: 460;
+      cursor: pointer;
+      color: #3b3530;
+      padding: 0.2rem 0;
+      transition: color 0.1s;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .faq-mini details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini details summary::after {
+      content: "﹀";
+      font-size: 1rem;
+      color: #958b7f;
+      margin-left: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .faq-mini details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .faq-mini details p {
+      padding: 0.6rem 0.2rem 0.4rem 0.2rem;
+      color: #585049;
+      font-size: 0.9rem;
+    }
+
+    .foot-note {
+      margin-top: 2.6rem;
+      font-size: 0.85rem;
+      color: #8b847a;
+      text-align: center;
+      border-top: 1px solid #ece7e0;
+      padding-top: 1.6rem;
+    }
+
+    .foot-note a {
+      color: #6d5d4b;
+      text-decoration: none;
+      border-bottom: 1px dotted #c4b8ab;
+    }
+
+    .foot-note a:hover {
+      border-bottom: 1px solid #6d5d4b;
+    }
+
+    .badge-return {
+      background: #e9e1d7;
+      color: #3e3730;
+      font-size: 0.75rem;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="site-header">
+      <h1>雷速 · 目录</h1>
+      <span class="subnote">再次回来 · 收藏夹</span>
+    </header>
+
+    <!-- 目录感布局卡片 -->
+    <div class="index-grid">
+      <div class="dir-card">
+        <span class="card-label">✦ 集合</span>
+        <h3>持续关注</h3>
+        <p>记录值得反复打开的去处，每一次都有新发现。</p>
+        <span class="tag">书签</span>
+      </div>
+      <div class="dir-card">
+        <span class="card-label">✦ 笔记</span>
+        <h3>再次访问</h3>
+        <p>熟悉的页面，不同的心境。常回常新。</p>
+        <span class="tag">存档</span>
+      </div>
+      <div class="dir-card">
+        <span class="card-label">✦ 索引</span>
+        <h3>知识入口</h3>
+        <p>从一处出发，延伸至更广的脉络。</p>
+        <span class="tag">地图</span>
+      </div>
+      <div class="dir-card">
+        <span class="card-label">✦ 收藏</span>
+        <h3>日常沉淀</h3>
+        <p>把值得的页面留下来，变成自己的角落。</p>
+        <span class="tag">归档</span>
+      </div>
+    </div>
+
+    <!-- 说明区：文章式排版 -->
+    <div class="essay-block">
+      <h2>从再次访问开始</h2>
+      <p>
+        有些地方去一次不够。隔段时间再回来，会发现当初忽略的细节，或者读出不一样的味道。<a href="https://leisu-m.com">雷速</a>就是这样一个值得反复打开的去处。不是因为它频繁变化，而是因为每次停留都能找到新的落脚点。
+      </p>
+      <p>
+        收藏夹里存下的不只是地址，更是一段自己与信息的联系。当再次点开熟悉的页面，那种「我记得这里」的感觉，天然带着亲切感。而持续关注，则是把这份联系拉长成习惯。
+      </p>
+    </div>
+
+    <!-- 提示区 引用框风格 -->
+    <div class="callout-box">
+      <div class="callout-title">📌 提示</div>
+      <p>
+        如果你是通过书签或者历史记录再次来到这里，不妨花几分钟看看最近更新的内容。有些板块的排布和过去相比有了微调，但整体的骨架依然保持简洁。
+      </p>
+      <p>
+        把 <a href="https://leisu-m.com">雷速</a> 加入浏览器的收藏栏，下次回来会更顺手。不需要特意记住什么，它就在那里。
+      </p>
+      <div class="small-meta">—— 来自一位常回来的访客</div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="related-area">
+      <h4>📂 相关信息</h4>
+      <ul class="related-items">
+        <li>页面结构稳定，适合反复查阅</li>
+        <li>内容方向以信息整理和索引为主</li>
+        <li>没有激进的推送，适合安静浏览</li>
+        <li>可以在不同设备上保持一致体验</li>
+        <li>收藏后随时可回，无需重复搜索</li>
+      </ul>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <details>
+        <summary>为什么值得再次访问？</summary>
+        <p>因为每次打开时，你的关注点可能不同。同一个页面在不同阶段会显现出不同的价值，尤其是以知识整理为导向的站点。</p>
+      </details>
+      <details>
+        <summary>怎样更轻松地保持关注？</summary>
+        <p>把它放进浏览器的书签文件夹，或者设为常用标签页。不需要每天惦记，想起了就点开看看，这样就很好。</p>
+      </details>
+      <details>
+        <summary>页面会频繁改版吗？</summary>
+        <p>不会。结构是稳定的，只会在细节上做渐进调整。你再次回来时不会感到陌生。</p>
+      </details>
+    </div>
+
+    <footer class="foot-note">
+      <span class="badge-return">📑 再次访问 · 收藏</span>
+      <br>
+      这里是 <a href="https://leisu-m.com">雷速</a> 的 index 介绍页 · 生活化但保持整洁
+    </footer>
+  </div>
+</body>
+</html>
