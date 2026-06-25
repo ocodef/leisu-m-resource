@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常查询与延伸阅读 · 爱游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f5f7;
+            color: #1e1e2f;
+            line-height: 1.6;
+        }
+        .site-header {
+            background: linear-gradient(145deg, #0a0b1a 0%, #1a1d34 100%);
+            color: #eef0f6;
+            padding: 3.5rem 1.5rem 3rem;
+            text-align: center;
+            position: relative;
+        }
+        .site-header h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        .site-header h1 span {
+            display: inline-block;
+            background: #d4b26a;
+            color: #0a0b1a;
+            font-weight: 600;
+            padding: 0.1rem 0.9rem;
+            border-radius: 28px;
+            font-size: 1.8rem;
+            margin-left: 0.3rem;
+        }
+        .site-header .sub {
+            margin-top: 0.75rem;
+            font-size: 1.05rem;
+            color: #b3b9d0;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+        .content-block {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 2.2rem 2.4rem;
+            margin-bottom: 2.2rem;
+        }
+        .content-block h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            border-left: 5px solid #d4b26a;
+            padding-left: 1.1rem;
+            color: #181a2b;
+        }
+        .content-block h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 1.5rem 0 0.4rem;
+            color: #242642;
+        }
+        .content-block p {
+            margin-bottom: 1.2rem;
+        }
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+        a {
+            color: #b8863e;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+        a:hover {
+            border-bottom-color: #b8863e;
+        }
+        .pull-quote {
+            background: #f2efe9;
+            border-left: 6px solid #d4b26a;
+            padding: 1.1rem 1.7rem;
+            margin: 1.8rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: normal;
+        }
+        .pull-quote p {
+            margin: 0;
+            font-size: 1.05rem;
+            color: #2d2f40;
+        }
+        .pull-quote .source {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #6e6f82;
+        }
+        .inline-highlight {
+            background: #f7f2e6;
+            padding: 0.05rem 0.3rem;
+            border-radius: 6px;
+        }
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #1c1e30;
+            margin-bottom: 0.2rem;
+        }
+        .visit-note {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem 1rem;
+            border-top: 1px solid #dfe0e8;
+        }
+        .visit-note p {
+            font-size: 1.1rem;
+            color: #2b2d40;
+        }
+        .visit-note a {
+            font-weight: 500;
+            border-bottom: 1px solid #b8863e;
+        }
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 2.5rem 1rem 2rem;
+            }
+            .site-header h1 {
+                font-size: 2rem;
+            }
+            .site-header h1 span {
+                font-size: 1.4rem;
+                padding: 0.1rem 0.7rem;
+            }
+            .content-block {
+                padding: 1.5rem 1.2rem;
+                border-radius: 16px;
+            }
+            .content-block h2 {
+                font-size: 1.35rem;
+                padding-left: 0.8rem;
+            }
+            .pull-quote {
+                padding: 0.9rem 1.1rem;
+            }
+        }
+        @media (max-width: 400px) {
+            .container {
+                padding: 1.5rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <h1>日常对照 · <span>爱游戏</span></h1>
+    <p class="sub">从资料查询、版本对比到延伸阅读 —— 一份轻量级的参考笔记</p>
+</header>
+
+<main class="container">
+
+    <!-- 第一段：从日常查询切入 -->
+    <article class="content-block">
+        <h2>一、查询习惯与信息锚点</h2>
+        <p>在实际使用中，多数人的第一步并非直接进入某个功能，而是通过搜索、书签或历史记录确认当前资源的准确性。尤其对于聚合类平台，<strong>版本号、收录范围和页面结构</strong>会随时间微调，定期对照原始站点能有效减少信息差。</p>
+        <p>以 <a href="https://waptv-igame.com">爱游戏</a> 为例，其首页的布局与分类入口在不同设备下呈现不同优先级。日常记录界面快照、留意更新公告，是保持使用路径清晰的基础动作。</p>
+        <div class="pull-quote">
+            <p>“任何聚合页面都应在首次使用时完成一次完整浏览，而非仅依赖搜索直达。这个动作能帮助建立心理上的站点地图。”</p>
+            <span class="source">—— 摘自个人工作流笔记 · 2025</span>
+        </div>
+    </article>
+
+    <!-- 第二段：对照与记录 -->
+    <article class="content-block">
+        <h2>二、版本对照与延伸阅读</h2>
+        <p>当页面发生改版或内容迁移时，推荐采用 <span class="inline-highlight">三段对照法</span>：先记录关键区块（导航、推荐位、底部信息），再对比历史截图或 Wayback Machine 存档，最后到社区或官方渠道确认变更说明。这种做法尤其适用于长期关注某个领域资讯的用户。</p>
+        <p>在 <strong>爱游戏</strong> 的情境下，游戏推荐列表、分类标签以及活动入口是易变区域。延伸阅读可以聚焦于游戏评测、版本更新日志或开发者访谈，这些材料往往比首页本身提供更深层的上下文。例如，通过观察某款游戏在首页的展示周期，可以推测其推广阶段或热度趋势。</p>
+        <h3>两个实用的延伸方向</h3>
+        <p><strong>· 横向对比</strong>：将同类平台的关键词、推荐算法偏好进行比较，能快速识别各家的内容侧重。<br>
+        <strong>· 纵向追溯</strong>：利用 RSS 或变动监控工具跟踪特定页面元素，适合需要持续追踪活动规则或游戏库变动的用户。</p>
+    </article>
+
+    <!-- 第三段：引用提示 + FAQ 摘要 -->
+    <article class="content-block">
+        <h2>三、引用提示与常见疑问</h2>
+        <p>在撰写分析或汇总报告时，引用来源应包含页面标题、访问日期以及具体的 URL 路径。对于动态加载的内容（如滚动加载列表），建议截取全屏并标注时间戳。<br>
+        以下是根据日常咨询整理的几条高频问题摘要：</p>
+        <div class="faq-item">
+            <strong>Q：为什么有时候首页显示的内容和昨天不一样？</strong>
+            <p>可能是 A/B 测试或定时更新。部分平台会根据用户画像调整推荐模块，另外活动替换、节假日专题也会导致结构变化。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q：如何快速定位某个分类或游戏？</strong>
+            <p>优先利用页面内置搜索或分类导航。如果首页没有直接搜索入口，可以尝试观察顶部菜单的第二级或查看底部 sitemap 链接。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q：移动端和桌面端的首页内容完全相同吗？</strong>
+            <p>不完全相同。布局差异、元素隐藏或重新排序是常见做法。建议在两种设备下各做一次记录，避免遗漏特定入口。</p>
+        </div>
+        <p style="margin-top: 0.8rem;">上述回答基于通用实践，具体表现仍以实际页面为准。</p>
+    </article>
+
+    <!-- 访问提示句，自然包含链接 -->
+    <div class="visit-note">
+        <p>如需查阅最新版本与完整分类，可直接前往 <a href="https://waptv-igame.com">爱游戏</a> 进行对照与延伸阅读。</p>
+    </div>
+
+</main>
+
+</body>
+</html>
